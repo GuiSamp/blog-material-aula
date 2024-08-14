@@ -23,3 +23,42 @@ author: JoaoAugustoMPdJ, SalvadorCerqueiraJr
 [@SalvadorCerqueiraJr](https://github.com/SalvadorCerqueiraJr)
 
 <!-- @include: ../../../includes/seminario-1-SalvadorCerqueiraJr/README.md -->
+
+## Guilherme Sampaio
+
+```mermaid
+classDiagram
+    class Conexao {
+        <<abstract>>
+        - emUso: boolean
+        + conectar() void
+        + desconectar() void
+        + estaEmUso() boolean
+        + executarConsulta(query: String) void
+    }
+
+    class ConexaoMySQL {
+        + executarConsulta(query: String) void
+    }
+
+    class ConexaoPostgreSQL {
+        + executarConsulta(query: String) void
+    }
+
+    class ConexaoPool {
+        - pool: List<Conexao>
+        - tamanhoMaximo: int
+        + pegarConexao(): Conexao
+        + devolverConexao(conexao: Conexao) void
+    }
+
+    class GerenciadorConexao {
+        + main(args: String[]) void
+    }
+
+    Conexao <|-- ConexaoMySQL
+    Conexao <|-- ConexaoPostgreSQL
+    ConexaoPool o-- Conexao : "gerencia"
+    GerenciadorConexao o-- ConexaoPool : "usa"
+
+```
