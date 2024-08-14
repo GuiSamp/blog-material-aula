@@ -79,3 +79,64 @@ MagoFactory --> Cajado : cria >
 
 ```
 </figure>
+
+## Guilherme Sampaio
+
+```mermaid
+classDiagram
+    class Chocolate {
+        <<interface>>
+        +descricao() String
+    }
+
+    class Embalagem {
+        <<interface>>
+        +usar() void
+    }
+
+    class ChocolateAoLeite {
+        +descricao() String
+    }
+
+    class ChocolateAmargo {
+        +descricao() String
+    }
+
+    class EmbalagemAoLeite {
+        +usar() void
+    }
+
+    class EmbalagemAmargo {
+        +usar() void
+    }
+
+    class ChocolateFactory {
+        <<interface>>
+        +criarChocolate() Chocolate
+        +criarEmbalagem() Embalagem
+    }
+
+    class ChocolateAoLeiteFactory {
+        +criarChocolate() Chocolate
+        +criarEmbalagem() Embalagem
+    }
+
+    class ChocolateAmargoFactory {
+        +criarChocolate() Chocolate
+        +criarEmbalagem() Embalagem
+    }
+
+    Chocolate <|.. ChocolateAoLeite
+    Chocolate <|.. ChocolateAmargo
+    Embalagem <|.. EmbalagemAoLeite
+    Embalagem <|.. EmbalagemAmargo
+    ChocolateFactory <|-- ChocolateAoLeiteFactory
+    ChocolateFactory <|-- ChocolateAmargoFactory
+
+    ChocolateAoLeiteFactory o-- ChocolateAoLeite : "cria"
+    ChocolateAoLeiteFactory o-- EmbalagemAoLeite : "cria"
+    ChocolateAmargoFactory o-- ChocolateAmargo : "cria"
+    ChocolateAmargoFactory o-- EmbalagemAmargo : "cria"
+
+
+```
