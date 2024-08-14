@@ -115,3 +115,67 @@ PizzaBuilder --> Pizza : build()
 ```
 <figcaption> Exemplo de builder </figcaption>
 </figure>
+
+## Guilherme Sampaio
+
+```mermaid
+classDiagram
+    class Chocolate {
+        + getTipo() : String
+        + getIngrediente() : String
+        + getSabor() : String
+    }
+
+    class ChocolateBuilder {
+        + setTipo(String tipo) : void
+        + setIngrediente(String ingrediente) : void
+        + setSabor(String sabor) : void
+        + build() : Chocolate
+    }
+
+    class ChocolateAoLeiteBuilder {
+        - String tipo
+        - String ingrediente
+        - String sabor
+        + setTipo(String tipo) : void
+        + setIngrediente(String ingrediente) : void
+        + setSabor(String sabor) : void
+        + build() : Chocolate
+    }
+
+    class ChocolateAmargoBuilder {
+        - String tipo
+        - String ingrediente
+        - String sabor
+        + setTipo(String tipo) : void
+        + setIngrediente(String ingrediente) : void
+        + setSabor(String sabor) : void
+        + build() : Chocolate
+    }
+
+    class ChocolateDirector {
+        + setBuilder(ChocolateBuilder builder) : void
+        + construirChocolate() : Chocolate
+    }
+
+    class ChocolateAoLeiteDirector {
+        - ChocolateBuilder builder
+        + setBuilder(ChocolateBuilder builder) : void
+        + construirChocolate() : Chocolate
+    }
+
+    class ChocolateAmargoDirector {
+        - ChocolateBuilder builder
+        + setBuilder(ChocolateBuilder builder) : void
+        + construirChocolate() : Chocolate
+    }
+
+    ChocolateBuilder <|-- ChocolateAoLeiteBuilder
+    ChocolateBuilder <|-- ChocolateAmargoBuilder
+    ChocolateDirector <|-- ChocolateAoLeiteDirector
+    ChocolateDirector <|-- ChocolateAmargoDirector
+    ChocolateDirector --> ChocolateBuilder : setBuilder(builder)
+    ChocolateDirector --> Chocolate : construirChocolate()
+    ChocolateBuilder --> Chocolate : build()
+
+```
