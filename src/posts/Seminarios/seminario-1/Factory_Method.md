@@ -73,5 +73,42 @@ ExcelRelatorioFactory --> RelatorioEmExcel : creates >
 
 
 ```
+## Guilherme Sampaio
+```mermaid
+classDiagram
+    %% Define as classes e interfaces
+    class Chocolate {
+        +produzir(): void
+    }
 
+    class ChocolateAmargo {
+        +produzir(): void
+    }
+
+    class ChocolateAoLeite {
+        +produzir(): void
+    }
+
+    class FábricaDeChocolate {
+        +criarChocolate(): Chocolate
+    }
+
+    class FábricaDeChocolateAmargo {
+        +criarChocolate(): Chocolate
+    }
+
+    class FábricaDeChocolateAoLeite {
+        +criarChocolate(): Chocolate
+    }
+
+    %% Define as relações entre as classes
+    Chocolate <|-- ChocolateAmargo
+    Chocolate <|-- ChocolateAoLeite
+    FábricaDeChocolate <|-- FábricaDeChocolateAmargo
+    FábricaDeChocolate <|-- FábricaDeChocolateAoLeite
+    FábricaDeChocolate --> Chocolate : criarChocolate()
+    FábricaDeChocolateAmargo --> ChocolateAmargo : cria >
+    FábricaDeChocolateAoLeite --> ChocolateAoLeite : cria >
+
+```
 </figure>
