@@ -23,3 +23,38 @@ author: GabrielMreira, Redror
 [@Redror](https://github.com/Redror)
 
 <!-- @include: ../../../includes/seminario-1-Redror/README.md -->
+
+## Guilherme Sampaio
+```mermaid
+classDiagram
+    class Chocolate {
+        <<interface>>
+        + clonar() Chocolate
+        + exibirDetalhes() void
+    }
+
+    class ChocolateAoLeite {
+        - nome: String
+        - origem: String
+        + clonar() Chocolate
+        + exibirDetalhes() void
+    }
+
+    class ChocolateAmargo {
+        - nome: String
+        - percentualCacau: String
+        + clonar() Chocolate
+        + exibirDetalhes() void
+    }
+
+    class Cliente {
+        + main(args: String[]) void
+    }
+
+    Chocolate <|-- ChocolateAoLeite
+    Chocolate <|-- ChocolateAmargo
+
+    Cliente o-- Chocolate : "usa"
+
+
+```
